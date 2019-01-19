@@ -23,6 +23,12 @@ int cmpfunc (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
 }
 
+void odd() {
+	for (int i = 0; i < n; ++i){
+		if (ar[i]%2!=0)
+	}
+}
+
 int main() {
 	int sockfd, newsockfd, status, port_no;
 	struct sockaddr_in server, client;
@@ -70,7 +76,9 @@ int main() {
 			break;
 			
 			case 3:
-			// status = write()
+			status = read(newsockfd, &choice, sizeof(n));
+			if (choice == 1)
+
 			break;
 		}
 		
