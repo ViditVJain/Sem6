@@ -1,9 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+
+int n, ar[50];
+
+int search (int x, int ar[]){
+	//printf("\npfunc : %d", x);
+	int found = -1;
+	for (int i = 0; i<n; i++){
+		if (ar[i] == x)
+			found = i;
+		//printf("%d\t", ar[i]);
+	}
+	return found;
+}
+
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
 
 int main() {
 	int sockfd, newsockfd, status, port_no;
@@ -24,25 +42,49 @@ int main() {
 	
 	socklen_t len = sizeof(client);
 	newsockfd = accept(sockfd, (struct sockaddr*)&client, &len); 
-	// printf("here\n");
-	int ar[50];
+	int choice, search_key;
 	do {
+		status = read(newsockfd, &n, sizeof(n));
+		printf("n = %d\n", n);
 		status = read(newsockfd, ar, sizeof(ar));
-		// status = recv(newsockfd, &ar, sizeof(ar), 0);
-		for (int i = 0; i < sizeof(ar)/sizeof(ar[0]); ++i) {
-			printf("%d\t", &ar[i]);
+
+		/*for (int i = 0; i < n; ++i) {
+			printf("%d\t", ar[i]);
+		}*/
+		//printf("\n");
+		
+		status = read(newsockfd, &choice, sizeof(n));
+		//printf("choice is : %d", choice);
+		//printf("\nstatus : %d\n", status);
+		
+		switch (choice){
+			case 1:
+			status = read(newsockfd, &search_key, sizeof(n));
+			search_key = search(search_key, ar);
+			status = write(newsockfd, &search_key, sizeof(n));
+			break;
+			
+			case 2:
+			qsort(ar, n, sizeof(int), cmpfunc);
+			status = write(newsockfd, ar, sizeof(ar));
+			break;
+			
+			case 3:
+			// status = write()
+			break;
 		}
+		
+		
+		
+		status = read(newsockfd, buff, sizeof(buff));
 
+		/*status = recv(newsockfd, buff, sizeof(buff), 0);
+		printf("Message recieved : ");
+		printf("%s\n", buff);
 
-
-
-		// status = recv(newsockfd, buff, sizeof(buff), 0);
-		// printf("Message recieved : ");
-		// printf("%s\n", buff);
-
-		// printf("Enter Message : ");
-		// scanf("%s", buff);
-		// status = send(newsockfd, buff, sizeof(buff), 0);
+		printf("Enter Message : ");
+		scanf("%s", buff);
+		status = send(newsockfd, buff, sizeof(buff), 0);*/
 	} while (strcmp(buff, "exit"));
 
 	close(sockfd);
