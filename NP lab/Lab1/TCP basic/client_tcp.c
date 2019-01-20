@@ -63,7 +63,17 @@ int main() {
 			case 3:
 			printf("1. Odd\t\t2. Even\n");
 			scanf("%d", &choice);
-			status = write(sockfd, &choice, sizeof(n))
+			status = write(sockfd, &choice, sizeof(n));
+			status = read(sockfd, &n, sizeof(n));
+			int odev[50];
+			status = read(sockfd, odev, sizeof(odev));
+			// printf("status = %d\n", status);
+			// printf("n = %d\n", n);
+			printf("Split Array : ");
+			for (int i = 0; i < n; ++i)
+			{
+				printf("%d\t", odev[i]);
+			}
 			break;
 		}
 

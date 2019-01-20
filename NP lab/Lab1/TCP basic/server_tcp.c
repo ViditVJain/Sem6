@@ -23,10 +23,30 @@ int cmpfunc (const void * a, const void * b) {
    return ( *(int*)a - *(int*)b );
 }
 
-void odd() {
+int odd(int ar[]) {
+	int k = 0;
 	for (int i = 0; i < n; ++i){
-		if (ar[i]%2!=0)
+		// printf("ar[i] = %d\n", ar[i]);
+		if ((ar[i]%2)!=0){
+			ar[k] = ar[i];
+			k++;
+			// printf("%d\t", ar[k]);
+		}
 	}
+	return k;
+}
+
+int even(int ar[]) {
+	int k = 0;
+	for (int i = 0; i < n; ++i){
+		// printf("ar[i] = %d\n", ar[i]);
+		if ((ar[i]%2)==0){
+			ar[k] = ar[i];
+			k++;
+			// printf("%d\t", ar[k]);
+		}
+	}
+	return k;
 }
 
 int main() {
@@ -51,7 +71,7 @@ int main() {
 	int choice, search_key;
 	do {
 		status = read(newsockfd, &n, sizeof(n));
-		printf("n = %d\n", n);
+		// printf("n = %d\n", n);
 		status = read(newsockfd, ar, sizeof(ar));
 
 		/*for (int i = 0; i < n; ++i) {
@@ -77,7 +97,26 @@ int main() {
 			
 			case 3:
 			status = read(newsockfd, &choice, sizeof(n));
-			if (choice == 1)
+			if (choice == 1){
+				n = odd(ar);
+				// printf("n = %d\n", n);
+				// for (int i = 0; i < n; ++i)
+				// {
+				// 	printf("%d\n", ar[i]);
+				// }
+				status = write(newsockfd, &n, sizeof(n));
+				status = write(newsockfd, ar, sizeof(ar));
+			}
+			else {
+				n = even(ar);
+				// printf("n = %d\n", n);
+				// for (int i = 0; i < n; ++i)
+				// {
+				// 	printf("%d\n", ar[i]);
+				// }
+				status = write(newsockfd, &n, sizeof(n));
+				status = write(newsockfd, ar, sizeof(ar));
+			}
 
 			break;
 		}
