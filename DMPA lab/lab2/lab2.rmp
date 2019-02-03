@@ -13,7 +13,7 @@
     <parameter key="encoding" value="SYSTEM"/>
     <process expanded="true">
       <operator activated="true" class="read_csv" compatibility="9.1.000" expanded="true" height="68" name="Read CSV" width="90" x="45" y="136">
-        <parameter key="csv_file" value="D:\160953218\lab 1\students (2).csv"/>
+        <parameter key="csv_file" value="/media/raghav/5474469E7446832A/Study/Sem6/DMPA lab/lab2/students (2).csv"/>
         <parameter key="column_separators" value=","/>
         <parameter key="trim_lines" value="false"/>
         <parameter key="use_quotes" value="true"/>
@@ -41,7 +41,7 @@
       </operator>
       <operator activated="true" class="multiply" compatibility="9.1.000" expanded="true" height="166" name="Multiply" width="90" x="179" y="136"/>
       <operator activated="true" class="read_excel" compatibility="9.1.000" expanded="true" height="68" name="Read Excel" width="90" x="715" y="544">
-        <parameter key="excel_file" value="D:\160953218\lab 1\AMZN-KO.xls"/>
+        <parameter key="excel_file" value="/media/raghav/5474469E7446832A/Study/Sem6/DMPA lab/lab2/AMZN-KO.xls"/>
         <parameter key="sheet_selection" value="sheet number"/>
         <parameter key="sheet_number" value="1"/>
         <parameter key="imported_cell_range" value="A1:C10485776"/>
