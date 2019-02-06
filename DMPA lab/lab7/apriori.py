@@ -6,13 +6,13 @@ def cmp(t1, t2):
 def findsubsets(S,m):
     return set(itertools.combinations(S, m))
 
-transactions=[]
+trans=[]
 items=[]
 
 with open('sample123.csv') as csvfile:
     readCSV = csv.reader(csvfile, delimiter=',')
     for row in readCSV:
-        transactions.append(row)
+        trans.append(row)
         for ele in row:
             if ele not in items and ele !='':
                 items.append(ele)
@@ -22,7 +22,7 @@ minSupport = int(input("Enter minimum support : "))
 L1={}
 for i in items:
     c=0
-    for ele in transactions:
+    for ele in trans:
         c=c+ele.count(i)
     if(c>=minSupport):
         L1[i]=c
@@ -38,7 +38,7 @@ for i in combos:
     C2[i]=0
 for ele in C2:
     c=0
-    for x in transactions:
+    for x in trans:
         m=0
         for i in ele:
             if i in x:
@@ -80,7 +80,7 @@ for i in C3:
   y[i]=0
   for ele in y:
     c=0
-    for x in transactions:
+    for x in trans:
         m=0
         for i in ele:
             if i in x:

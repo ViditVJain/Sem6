@@ -6,21 +6,19 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-#define n_stud 4
+#define n_stud 5
 struct stud{
 	char reg[500];
 	char name[500];
-	char add[500];
-	char sub[4][500];
-	char dep[500];
-	char courses[500];
+	char sub[500];
 };
 
 struct stud db[n_stud] = {
-	{"160953254", "Harshit", "Mumbai", {"100", "99", "98", "97"}, "ICT", "Big data, TCP/IP, Algo"},
-	{"160953252", "Shrey", "Farizabad", {"10", "9", "8", "7"}, "ICT", "Big data, Algo"},
-	{"160953256", "Kshitij", "India", {"50", "50", "50", "50"}, "ICT", "TCP/IP, Algo"},
-	{"160953269", "Boye", "", {"69", "42.0", "48.9", "91.1"}, "Mech", "Crafts, Welding"}
+	{"160953777", "raghav","456"},
+	{"160953882", "abc","453"},
+	{"160953566", "KBJH","456"},
+	{"160953349", "zxcv","453"},
+    {"160953322", "znyc","456"}
 };
 
 void find_by_reg(char buff[]){
@@ -33,7 +31,7 @@ void find_by_reg(char buff[]){
 	if(i==n_stud){
         sprintf(buff, "%s", "Not found");
 	} else {
-		sprintf(buff, "Name: %s\nAdd: %s", db[i].name, db[i].add);
+		sprintf(buff, "Name: %s\nSub: %s", db[i].name, db[i].sub);
 	}
 }
 
@@ -47,22 +45,22 @@ void find_by_name(char buff[]){
 	if(i==n_stud){
         sprintf(buff, "%s", "Not found");
 	} else {
-		sprintf(buff, "Dept: %s\nCourses: %s", db[i].dep, db[i].courses);
+		sprintf(buff, "Reg: %s\nsub: %s", db[i].name, db[i].sub);
 	}
 }
 
 void find_by_code(char buff[]){
-	int code;
-	code = atoi(buff);
 	int i;
-	strcpy(buff, "");
-	if(code<4){
-		for(i=0; i<n_stud; i++){
-			sprintf(buff, "%sName: %s\tScore: %s\n", buff, db[i].name, db[i].sub[code]);
-		}
-	} else {
-		strcpy(buff, "Subject not found");
-	}
+    for(i=0; i<n_stud; i++){
+        if(!strcmp(buff, db[i].sub)){
+            break;
+        }
+    }
+    if(i==n_stud){
+        sprintf(buff, "%s", "Not found");
+    } else {
+        sprintf(buff, "Name: %s\nReg: %s", db[i].name, db[i].Reg);
+    }
 }
 
     main() {
