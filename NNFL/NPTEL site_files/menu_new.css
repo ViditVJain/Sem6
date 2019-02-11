@@ -1,0 +1,156 @@
+
+#div_lm
+{
+	float:left;
+	font-size:12px;
+    width: 100%;
+}
+#div_lm ul
+{
+    padding-left: 1px;
+    padding-right: 1px;
+    margin: 0;
+    list-style: none;
+    background-color: #66ACAD;
+}
+#div_lm ul li{
+	border-top:1px #7F0804 solid;
+	padding-bottom:5px;
+	padding-top:5px;
+	line-height:16px;
+}
+.course_lectures {
+    border: 1px solid #7F0804;
+    padding: 0;
+}
+#div_lm li a, #div_lm li a:visited, #div_lm li.here li a, #div_lm li.here li a:visited
+{
+	color:#000;
+	font-size:13px;
+	text-decoration:none;
+	display:block;
+	font-family:Tahoma;
+}
+#div_lm li a {
+	padding: 8px 8px;
+}
+#div_lm li.here, #div_lm li.here li.here{
+	list-style:circle;
+}
+#div_lm li.here a:active, #div_lm li.here li.here a:active
+{
+	color:#000;
+	text-decoration:none;
+	display:block;
+	background-color:#cbba9f;
+
+
+}
+
+#div_lm ul ul ul
+{
+	padding-left:20px;
+	display:none;
+	font-weight:normal;
+
+
+}
+#div_lm ul ul
+{
+	padding-left:20px;
+	display:none;
+	font-weight:normal;
+	background-color:#fff;
+	line-height:24px;
+
+}
+#div_lm ul ul li
+{
+	border-top:thin solid #66ACAD;
+}
+.video-tabs>li.active>a, .video-tabs>li.active>a:hover, .video-tabs>li.active>a:focus {
+    color: #FFF;
+    background-color: #66ACAD;
+    border: 1px solid #dddddd;
+    border-bottom-color: transparent;
+    cursor: default;
+    font-weight: bold;
+}
+.video-contents {
+	border: 1px solid #66ACAD;
+}
+#watch {
+    padding: 10px;
+}
+#download {
+    padding: 50px;
+}
+.format-well {
+	background-color: #66ACAD;
+	font-weight: bold;
+	color:#FFF;
+}
+.format-label {
+    padding: 8px;
+    font-weight: bold;
+}
+.coverd-lecs {
+    padding: 0 20px 15px 20px;
+}
+._vp_widget {
+	width: 40%;
+    font-size: 10px;
+}
+.vp_header {
+    width: 100%;
+    background-color: #66ACAD;
+    /*border: 1px solid #7f0804;*/
+    text-align: center;
+    padding: 5px;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+}
+.vp_list {
+	height:auto !important;
+    border: 1px solid #66ACAD
+}
+.vp_lst_odd {
+    background-color: rgba(102, 172, 173, 0.42);
+}
+.top {
+    padding: 8px;
+}
+.vp_lst_active {
+    background-color: initial;
+}
+.vp_time {
+    background-color: #7F0804;
+    border: 1px solid #FFF;
+    color: ghostwhite;
+    border-radius: 20px;
+}
+.vp_footer {
+    background-color: #66ACAD;
+    border: 1px solid #66ACAD;
+    font-size: 9px;
+    padding: 2px;
+    color: #FFF;
+}
+.vp_footer a {
+	color:#FFF;
+}
+.login-contents {
+	padding: 10px;
+}
+.login-tab-pane {
+	padding: 10px;
+}
+.leftarrow,.rightarrow {
+    width: 20px;
+    height: 26px;
+    position: relative;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}

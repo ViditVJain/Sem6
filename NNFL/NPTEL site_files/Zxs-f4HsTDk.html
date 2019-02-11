@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html" />
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="content-type" content="text/html" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+
+    <!--script>
+
+window['_fs_run_in_iframe'] = true;
+window['_fs_debug'] = false;
+window['_fs_host'] = 'fullstory.com';
+window['_fs_org'] = 'EH64V';
+window['_fs_namespace'] = 'FS';
+(function(m,n,e,t,l,o,g,y){
+    if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+    g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
+    o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+    y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+    g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};g.event=function(i,v){g('event',{n:i,p:v})};
+    g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
+    g.consent=function(a){g("consent",!arguments.length||a)};
+    g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+    g.clearUserCookie=function(){};
+})(window,document,window['_fs_namespace'],'script','user');
+</script-->
+
+    <script type="text/javascript">
+    	if((navigator.userAgent).match(/iPhone|iPad|iPod/i)){
+		    if( window.localStorage ){
+		      if( !localStorage.getItem('firstLoad')){
+		        localStorage['firstLoad'] = true;
+		       var url = window.location.href;
+		       if(url.indexOf("=")>-1){
+		       	var indexEqual = url.indexOf("=");
+		       	var videoID = url.substring(indexEqual+1,indexEqual+12);
+		       }else if(url.lastIndexOf("/")>-1) {
+		       	var indexEqual = url.lastIndexOf("/");
+ 		       	var videoID = url.substring(indexEqual+1,indexEqual+12); 
+		       }else{
+ 		       	var videoID = "PWm2-4iAOIY";
+		       }
+		       document.location = "videoken://"+videoID;
+		       setTimeout(function(){
+		          window.location.reload();
+		       }, 0);
+		      }  
+		      else{
+		        localStorage.removeItem('firstLoad');
+		      }
+		    }
+		}
+  	
+		//This block is impemented for removing third party scripting which is reqiuired for social sharing
+		var head= document.getElementsByTagName('head')[0];
+		function addScriptDynamic(source, srcText){
+			var s = document.createElement("script");
+			s.type = "text/javascript";
+			s.src = source;
+			//$("head").append(s);
+			head.appendChild(s);
+
+		}
+
+		var currDomain=window.location.hostname;
+		if(currDomain.indexOf('nocookie')== -1){
+
+			addScriptDynamic('https://apis.google.com/js/platform.js');
+			addScriptDynamic('//platform.linkedin.com/in.js');
+			window._trackJs = { token: '085a3cf30d8b484fb114c1ab1612a32c' };
+			addScriptDynamic('https://cdn.trackjs.com/releases/current/tracker.js')
+
+		}
+	</script>	
+	<title>VideoKen - video based collaborative learning. Video Indexing, Search and Curation.</title>
+	<base href="/">
+	<meta name="description" content="The next generation of video based learning. Social, video based learning platform. Unique Video Indexing, automatic Table of Contents generation, automatic phrase cloud generation, enhanced Video Search, video curation and sharing. Annotate and personalize videos">
+	<meta name="keywords" content="video based learning, learning through videos, Online Learning,  Social Learning,  personalized Learning, personalized video annotations, Collaborative Learning, Online education, Curated online courses, Video Indexing, video search, video curation, kenlist, ken, automatic video meta data, automated table of contents for videos, automated phrase cloude for videos, artificial intelligence for videos, video ai, video knowledge, Learning Management System, Corporate Training, gamified learning, video analytics, patented video technology">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<meta name="author" content="Videoken" />
+	<link rel="shortcut icon" href="embed/images/browser-tab-icon.png?v=@version@"/>
+	<!--link rel="stylesheet" href="embed/resources/bootstrap/bootstrap.min.css?v=1549435967377" type='text/css' /-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" type='text/css' />
+	<link rel='stylesheet' id='bigappcompany-style-css' href='embed/css/style.css?v=1549435967377' type='text/css' />
+	<link rel='stylesheet' href='embed/css/custom.css?v=1549435967377' type='text/css' />
+	<!--link rel='stylesheet' href='embed/resources/font-awesome/css/font-awesome.min.css?v=1549435967377' type='text/css' /-->
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' type='text/css' />
+	<link rel='stylesheet' href='embed/css/video.css?v=1549435967377' type='text/css' />
+	<link rel='stylesheet' href='embed/css/embed-custom.css?v=1549435967377'/>
+	<link rel='stylesheet' href='embed/css/embed-small.css?v=1549435967377'  media='screen and (min-width: 200px) and (max-width: 750px)'/>
+	<link rel='stylesheet' href='embed/css/call-to-action.css?v=1549435967377' />
+	<link rel='stylesheet' href='embed/css/table-of-content-onload.css?v=1549435967377' />
+	<link rel='stylesheet' href='embed/css/embed-responsive.css?v=1549435967377' />
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css" property="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<!--script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script-->
+
+<!--script src="embed/scripts/angular-1.6.5.min.js"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<!--script src="embed/scripts/angular-1.6.5-route.min.js"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+ 
+</head>
+<body ng-app="Embed" class="client-detail toggle-popup show-video" show=0>
+ 
+  <img src="embed/images/loading.gif" ng-if="showLoading" style="position: relative; display:block; margin:auto;top:45vh;" />
+
+  <div ng-view ></div>
+  <input type="hidden" name="tocOverOrNot" id="tocOverOrNot" value="0">
+  <input type="hidden" name="tocData" id="tocData" value="">
+  <input type="hidden" name="pcData" id="pcData" value="">
+  <input type="hidden" name="screenType" id="screenType" value="">
+  <input type="hidden" name="viewType" id="viewType" value="">
+	
+  <!-- Modal -->
+  <div id="unauthorized" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header features-popup-header">
+        <h4>Unauthorized Access</h4>
+      </div>
+      <div class="modal-body">
+        <p>This video content is only available inside the organization network.</p>
+      </div>
+      <div class="modal-footer features-popup-footer">
+        Powered By <a href="https://videoken.com/" onclick="onVideokenLinkClick()" target="_Blank">VideoKen</a>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  
+	<!--script type="text/javascript" src="embed/scripts/moment.js"></script-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+	<script type="text/javascript" src="embed/scripts/phraseCloudContextSearchModule.js?v=1549435967377"></script>
+	<!-- <script type="text/javascript" src="embed/scripts/angular-moment.min.js"></script> -->
+	<!--script type="text/javascript" src="embed/scripts/angular-1.6.5-cookies.min.js"></script-->
+	<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-cookies.min.js"></script-->
+	<!--script type="text/javascript" src="embed/scripts/jquery-2.0.3.min.js"></script-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="embed/scripts/config.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/scripts/AuthenticationServices.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/scripts/client_logger.js?v=1549435967377"></script>
+	<!--script type="text/javascript" src="resources/bootstrap/bootstrap.min.js"></script-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--script type="text/javascript" src="embed/vendor/dash.all.debug.js?v=1549435967377"></script-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.9.1/dash.all.min.js"></script>
+	<!--script type="text/javascript" src="embed/vendor/video.js?v=1549435967377"></script-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.2.3/video.min.js"></script>
+	<!--script type="text/javascript" src="embed/vendor/videojs-dash.js?v=1549435967377"></script-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/2.10.0/videojs-dash.min.js"></script>
+        
+	<script type="text/javascript" src="embed/vendor/Youtube.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/scripts/call-to-action.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/scripts/utils.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/scripts/table-of-content.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/scripts/phrase-cloud.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/app.js?v=1549435967377"></script>
+	<script type="text/javascript" src="embed/resources/bootstrap/bootstrap.min.js"></script>
+    <!-- BEGIN TRACKJS -->
+	<!--script type="text/javascript">window._trackJs = { token: '085a3cf30d8b484fb114c1ab1612a32c' };</script>
+	<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script-->
+    <!-- END TRACKJS -->
+
+<script>
+	
+	// disable browser context menu on HTML video/Blocking right click
+	window.onload  = function (){
+	var myVideo = document.getElementById("this-should-be-fs");
+		if(myVideo){
+			if (myVideo.addEventListener) {
+	    		myVideo.addEventListener('contextmenu', function(e) {
+	    			//console.log("Blocking right click on player pre 1 !")
+	        		e.preventDefault();
+	        		//console.log("Blocking right click on player pre 1 !")
+	    		}, false);
+			} else {
+	    		myVideo.attachEvent('oncontextmenu', function() {
+	    			//console.log("Blocking right click on player pre 2 !")
+	        		window.event.returnValue = false;
+	        		//console.log("Blocking right click on player pre 2 !")
+	    		});
+			}
+		}
+	}
+
+	function getJSONLD(){
+		var url = window.location.href;
+		if(url.indexOf("=")>-1){
+	     	var indexEqual = url.indexOf("=");
+	       	var videoID = url.substring(indexEqual+1,indexEqual+12);
+		if(videoID.indexOf('vken')!= -1)
+	       		videoID = url.substring(indexEqual+1,indexEqual+17);
+	    }else if(url.lastIndexOf("/")>-1) {
+	       	var indexEqual = url.lastIndexOf("/");
+		var videoID = url.substring(indexEqual+1,indexEqual+12);
+		if(videoID.indexOf('vken')!= -1)
+	       		videoID = url.substring(indexEqual+1,indexEqual+17); 
+	    }else{
+		   	var videoID = "PWm2-4iAOIY";
+	    }
+		$.ajax({
+	        type: 'GET',
+	        url: 'https://videoken.com/api/getJSONLD/' + videoID,
+	        dataType: 'json',
+			complete: function (resp) {
+				var script = document.createElement('script');
+			    script.type = 'application/ld+json';
+			    if(resp && resp.responseJSON){
+			    	if(resp.responseJSON.message){
+			    		script.text = JSON.stringify(resp.responseJSON.message); 
+			    	}
+			    }
+			    document.querySelector('head').appendChild(script); 
+			    /* 
+			    {
+			        "@context": "http://schema.org",
+				        "@type": "Recipe",
+				        "name": "My recipe name"
+			    }
+			    */
+			},
+			error: function (data) {
+				console.log(data);
+			}}); 
+	}
+	getJSONLD();
+
+	var sameOrigin;
+ 	var isParentExist;
+ 	var checkParent;
+		function inIframe() { try { return window.self !== window.top; } catch (e) {  return true; } }
+		if(inIframe()==true){ 
+		  setTimeout(function(){ $('.videoken-main-video-container').addClass('inside-iframe');},300);
+		}
+		try
+		{
+    			sameOrigin = window.parent.location.host == window.location.host;
+		}
+		catch (e)
+		{
+    			sameOrigin = false;
+		}
+
+		$(document).ready(function(){
+			if(sameOrigin){
+				isParentExist = window.parent.document.getElementsByClassName('embed-home')[0];
+				if(isParentExist && isParentExist!=null && (typeof isParentExist !== "undefined")){
+					checkParent=window.parent.document.getElementsByClassName('embed-home')[0].innerHTML;
+					if(checkParent){
+						$('head').append('<link rel="stylesheet" href="embed/css/styledynamic.css?v=1549435967377" type="text/css" />');
+					}
+				}
+			}
+		
+		});
+  </script>
+  <!--script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script-->
+
+</body>  
+</html>
