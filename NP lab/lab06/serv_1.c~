@@ -1,0 +1,235 @@
+#include<string.h>
+#include<unistd.h>
+#include<sys/socket.h>
+#include<sys/types.h>
+#include<netinet/in.h>
+#include<stdlib.h>
+#include<stdio.h>
+
+#define DB "db"
+#define n_users 3
+
+struct user{
+	char username[500];
+	char password[500];
+	int balance;
+};
+
+void encrypt(char buff[]){
+	int i;
+	for(i=0; i<strlen(buff); i++){
+		buff[i]+=3;
+	}
+}
+
+void decrypt(char buff[]){
+	int i;
+	for(i=0; i<strlen(buff); i++){
+		buff[i]-=3;
+	}
+}
+
+int validate(char uname[], char pass[], char buff[],
+	struct user users[], int n){
+	int i;
+	struct user u;
+	for(i=0; i<n; i++){
+		u = users[i];
+		if(!strcmp(uname, u.username)){
+			if(!strcmp(pass, u.password)){
+				strcpy(buff, "Successful");
+				return i;
+			} else {
+				strcpy(buff, "Incorrect Password");
+				return -1;
+			}
+		}
+	}
+	strcpy(buff, "Incorrect Username");
+	return -1;
+}
+
+void fsend(int s, char buff[]){
+	int sntb = send(s, buff, sizeof(char)*500, 0);
+    if (sntb == -1) {
+        close(s);
+        printf("\nMessage Sending Failed");
+        exit(0);
+    }
+}
+
+
+void frecv(int s, char buff[]){
+	int recb = recv(s, buff, sizeof(char)*500, 0);
+    if (recb == -1) {
+        printf("\nMessage Recieving Failed");
+        close(s);
+        exit(0);
+    }
+}
+
+void write_users(struct user users[], int n){
+	int i;
+	FILE *outfile; 
+	outfile = fopen (DB, "w"); 
+	for(i=0; i<n; i++){
+		struct user u = users[i];
+		if (outfile == NULL) 
+		{ 
+		    fprintf(stderr, "\nError opend file\n"); 
+		    exit (1); 
+		}
+		
+		// write struct to file 
+		fwrite (&u, sizeof(struct user), 1, outfile); 
+		
+		if(fwrite != 0)  
+		    printf("contents to file written successfully !\n"); 
+		else 
+		    printf("error writing file !\n"); 
+	}
+	fclose (outfile); 
+}
+
+void read_users(struct user users[], int n){
+	int i;
+	FILE *infile;
+	infile = fopen (DB, "r"); 
+	for(i=0; i<n; i++){
+		struct user u;
+		if (infile == NULL) 
+		{ 
+		    fprintf(stderr, "\nError opening file\n"); 
+		    exit (1); 
+		}
+		  
+		// read file contents till end of file 
+		while(fread(&u, sizeof(struct user), 1, infile)){
+		    printf("User: %s\nPass: %s\nBalance: %d\n",
+        		u.username, u.password, u.balance);
+        	users[i++] = u;
+        	printf("\n");
+        }
+	}
+	// close file 
+	fclose (infile); 
+}
+
+    main() {
+        int s, r, recb, sntb, x, ns, a = 0;
+        printf("INPUT port number: ");
+        scanf("%d", & x);
+        socklen_t len;
+        struct sockaddr_in server, client;
+        char buff[500];
+        char uname[500];
+        char pass[500];
+        /*
+        struct user users[] = {
+        	{"user", "pass", 10000},
+        	{"user123", "pass123", 123123},
+        	{"test", "test", 10}
+        };
+        
+        write_users(users, n_users);*/
+        
+        struct user users[n_users];
+        read_users(users, n_users);
+
+        s = socket(AF_INET, SOCK_STREAM, 0);
+        if (s == -1) {
+            printf("\nSocket creation error.");
+            exit(0);
+        }
+        printf("\nSocket created.");
+
+        server.sin_family = AF_INET;
+        server.sin_port = htons(x);
+        server.sin_addr.s_addr = htonl(INADDR_ANY);
+
+        r = bind(s, (struct sockaddr * ) & server, sizeof(server));
+        if (r == -1) {
+            printf("\nBinding error.");
+            exit(0);
+        }
+        printf("\nSocket binded.");
+
+        r = listen(s, 1);
+        if (r == -1) {
+            close(s);
+            exit(0);
+        }
+        printf("\nSocket listening.");
+
+        len = sizeof(client);
+
+        ns = accept(s, (struct sockaddr * ) & client, & len);
+        if (ns == -1) {
+            close(s);
+            exit(0);
+        }
+        printf("\nSocket accepting.");
+
+        frecv(ns, buff);
+        printf("\nUsername recieved: %s\n", buff);
+        strcpy(uname, buff);
+        
+        frecv(ns, buff);
+        printf("\nPassword recieved: %s\n", buff);
+        decrypt(buff);
+        strcpy(pass, buff);
+
+        int u = validate(uname, pass, buff, users, n_users);
+        
+        fsend(ns, buff);
+        printf("%s\n", buff);
+        
+        if(!strcmp(buff, "Successful")){
+        	printf("User: %s\nPass: %s\nBalance: %d\n",
+        		users[u].username, users[u].password, users[u].balance);
+        	
+        	while(1){
+        	
+		    	frecv(ns, buff);
+		    	int opt = atoi(buff);
+		    	int amt;
+		    	if(opt==4){
+		    		printf("Exit\n");
+		    		break;
+		    	}
+		    	switch(opt){
+		    		case 1:
+		    			printf("Debit\n");
+		    			frecv(ns, buff);
+		    			amt = atoi(buff);
+		    			users[u].balance-=amt;
+		    			if(users[u].balance>=amt){
+		    				users[u].balance-=amt;
+		    				sprintf(buff, "\nBalance: %d\n", users[u].balance);
+		    			} else {
+		    				sprintf(buff, "\nNot enough funds\nBalance: %d\n", users[u].balance);
+		    			}
+		    			break;
+		    		case 2:
+		    			printf("Credit\n");
+		    			frecv(ns, buff);
+		    			amt = atoi(buff);
+		    			users[u].balance+=amt;
+		    			sprintf(buff, "\nBalance: %d\n", users[u].balance);
+		    			break;
+		    		case 3:
+		    			printf("View Balance\n");
+		    			sprintf(buff, "\nBalance: %d\n", users[u].balance);
+		    			break;
+		    		case 4:
+		    			printf("Exit\n");
+		    			break;
+		    	}
+		    	fsend(ns, buff);
+        	}
+        	write_users(users, n_users);
+        }
+        
+        close(ns);
+        close(s);
+    }
